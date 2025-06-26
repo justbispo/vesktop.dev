@@ -2,7 +2,6 @@
 import Windows from "~/assets/windows.svg";
 import Apple from "~/assets/apple.svg";
 import Linux from "~/assets/linux.svg";
-import { Image } from "astro:assets";
 
 const sections = [
     {
@@ -26,7 +25,7 @@ const sections = [
 <section>
     {
         sections.map(({ title, link, image }) => (
-            <a href={link}>
+            <a href={link} class={title}>
                 <h3>{title}</h3>
                 <img src={image.src} alt="" />
             </a>
@@ -60,5 +59,9 @@ const sections = [
 
     a:hover {
         transform: scale(1.05);
+    }
+
+    :global([data-theme="dark"]) .macOS img {
+        filter: invert(0.6);
     }
 </style>
