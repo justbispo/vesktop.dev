@@ -1,0 +1,29 @@
+---
+export interface Props {
+    iconUrl: string;
+    tag?: `h${1 | 2 | 3 | 4 | 5 | 6}`;
+}
+
+const { iconUrl, tag: Tag = "h2" } = Astro.props;
+---
+
+<Tag class="icon-header not-content">
+    <img src={iconUrl} alt="" />
+    <slot />
+</Tag>
+
+<style>
+    .icon-header {
+        display: flex;
+        height: 1.2em;
+        align-items: center;
+    }
+
+    img {
+        height: 100%;
+        width: 1em;
+        object-fit: contain;
+        margin-right: 0.5em;
+        vertical-align: middle;
+    }
+</style>

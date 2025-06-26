@@ -1,0 +1,64 @@
+---
+import Windows from "~/assets/windows.svg";
+import Apple from "~/assets/apple.svg";
+import Linux from "~/assets/linux.svg";
+import { Image } from "astro:assets";
+
+const sections = [
+    {
+        title: "Windows",
+        link: "/install/windows/",
+        image: Windows
+    },
+    {
+        title: "macOS",
+        link: "/install/mac/",
+        image: Apple
+    },
+    {
+        title: "Linux",
+        link: "/install/linux/",
+        image: Linux
+    }
+];
+---
+
+<section>
+    {
+        sections.map(({ title, link, image }) => (
+            <a href={link}>
+                <h3>{title}</h3>
+                <img src={image.src} alt="" />
+            </a>
+        ))
+    }
+</section>
+
+<style>
+    section {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+    }
+
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+
+        padding: 1em;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+    }
+
+    a:hover {
+        transform: scale(1.05);
+    }
+</style>

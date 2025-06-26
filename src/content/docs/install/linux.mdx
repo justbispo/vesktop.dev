@@ -1,0 +1,42 @@
+---
+title: Install Vesktop on Linux
+---
+
+import { Aside, LinkButton } from "@astrojs/starlight/components";
+
+import IconHeader from "~/components/IconHeader.astro";
+
+import UbuntuIcon from "~/assets/ubuntu.svg";
+import FedoraIcon from "~/assets/fedora.svg";
+import AppImageIcon from "~/assets/appimage.svg";
+
+<Aside type="note">
+    While the Flatpak is convenient, it comes with some limitations such as dysfunctional Rich Presence. We recommend
+    using native packages for the best experience.
+</Aside>
+
+[![Download on Flathub](https://dl.flathub.org/assets/badges/flathub-badge-en.svg)](https://flathub.org/apps/dev.vencord.Vesktop)
+
+<IconHeader tag="h4" iconUrl={UbuntuIcon.src}>
+    deb (Debian / Ubuntu)
+</IconHeader>
+<LinkButton href="https://vencord.dev/download/vesktop/amd64/deb">x64 Download</LinkButton>
+<LinkButton href="https://vencord.dev/download/vesktop/arm64/deb">arm64 Download</LinkButton>
+
+<IconHeader tag="h4" iconUrl={FedoraIcon.src}>
+    rpm (Fedora / Red Hat)
+</IconHeader>
+<LinkButton href="https://vencord.dev/download/vesktop/amd64/rpm">x64 Download</LinkButton>
+<LinkButton href="https://vencord.dev/download/vesktop/arm64/rpm">arm64 Download</LinkButton>
+
+<IconHeader tag="h4" iconUrl={AppImageIcon.src}>
+    AppImage (Universal)
+</IconHeader>
+<LinkButton href="https://vencord.dev/download/vesktop/amd64/appimage">x64 Download</LinkButton>
+<LinkButton href="https://vencord.dev/download/vesktop/arm64/appimage">arm64 Download</LinkButton>
+
+<IconHeader tag="h4" iconUrl={AppImageIcon.src}>
+    tarball (portable)
+</IconHeader>
+<LinkButton href="https://vencord.dev/download/vesktop/amd64/linux-portable">x64 Download</LinkButton>
+<LinkButton href="https://vencord.dev/download/vesktop/arm64/linux-portable">arm64 Download</LinkButton>
