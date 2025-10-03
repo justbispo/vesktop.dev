@@ -25,7 +25,6 @@ export default defineConfig({
 
             lastUpdated: true,
             pagination: false,
-            tableOfContents: false,
 
             sidebar: [
                 {
@@ -38,8 +37,12 @@ export default defineConfig({
                 },
                 {
                     label: "Wiki",
+                    slug: "wiki"
+                },
+                {
+                    label: "Linux",
                     autogenerate: {
-                        directory: "wiki"
+                        directory: "linux"
                     }
                 }
             ]

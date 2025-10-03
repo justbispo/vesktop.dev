@@ -1,0 +1,38 @@
+---
+title: Flatpak Notes
+sidebar:
+    order: 3
+description: Useful information for using Vesktop on Linux
+---
+
+## Wayland support
+
+See [Tips & Tricks - Wayland Support](/linux/tips/#wayland-support) for information on enabling Wayland support.
+
+## File Access
+
+The Vesktop flatpak by default only has access to a limited set of files. This will break Drag & Drop and file pasting.
+
+You can give Vesktop access to all your files with [Flatseal](https://flathub.org/en/apps/com.github.tchx84.Flatseal) or by running the following command:
+
+```sh
+flatpak override --filesystem=home dev.vencord.Vesktop
+```
+
+## Discord Rich Presence (Game Activity)
+
+If you would like functional Rich Presence, do not use the Flatpak version.
+
+Due to the sandboxed nature of Flatpak, Rich Presence is very limited and will only work for games that use Discord's Game SDK to set your presence.
+This is only a very small number of games. Most games get detected by scanning running processes.
+
+Run the following commands to enable support for games using Game SDK:
+
+```sh
+mkdir -p ~/.config/user-tmpfiles.d
+echo 'L %t/discord-ipc-0 - - - - .flatpak/dev.vencord.Vesktop/xdg-run/discord-ipc-0' > ~/.config/user-tmpfiles.d/discord-rpc.conf
+systemctl --user enable --now systemd-tmpfiles-setup.service
+
+sudo flatpak override --filesystem=xdg-run/.flatpak/dev.vencord.Vesktop:create --filesystem=xdg-run/discord-ipc-0
+flatpak --user override --filesystem=xdg-run/.flatpak/dev.vencord.Vesktop:create --filesystem=xdg-run/discord-ipc-0
+```

@@ -1,0 +1,41 @@
+---
+title: Troubleshooting
+description: Common issues and their solutions for Vesktop on Linux
+sidebar:
+    order: 2
+---
+
+## Nothing happens when trying to start a Screenshare
+
+This means you either have no Screen cast portal, or it's broken. See [XDG Desktop Portal on the Arch Linux Wiki](https://wiki.archlinux.org/title/XDG_Desktop_Portal) for more information.
+
+## Vesktop freezes after getting pinged or messaged
+
+This is due to having no Notification Server on your system. Either [install one](https://wiki.archlinux.org/title/Desktop_notifications)
+or disable Desktop Notifications in Discord Notification settings
+
+## Clicking link does not open the web browser
+
+Install `xdg-utils`
+
+## Vesktop looks blurry
+
+The most likely cause is that Vesktop is running in XWayland; Try running in Wayland instead.
+
+See [Tips & Tricks - Wayland Support](/linux/tips/#wayland-support) for more information.
+
+## Some videos don't play or only play audio
+
+This happens because these videos use the HEVC encoding. Follow these steps to enable support:
+
+1. Verify that you have working **VA-API** with HEVC decode support:
+    ```sh
+    vainfo 2>/dev/null | grep HEVC | grep VAEntrypointVLD
+    ```
+    If there is no output, it's not supported.
+2. If it's not supported, try to [install it](https://wiki.archlinux.org/title/Hardware_video_acceleration#Installation) and repeat step 1. You need exactly VA-API, not VDPAU or NVDEC.
+3. Run Vesktop with the following flags:
+    ```sh
+    vesktop --enable-features=VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE,VaapiOnNvidiaGPUs
+    ```
+    To make this permanent, see [Tips & Tricks - Making Command Line Flags Permanent](/linux/tips/#making-command-line-flags-permanent).
