@@ -9,7 +9,7 @@ sidebar:
 
 Vesktop runs as a Wayland application by default on Wayland sessions. You can override this behaviour.
 
--   If you are using Flatpak, open [Flatseal](https://flathub.org/en/apps/com.github.tchx84.Flatseal) and deny the `Wayland windowing system` permission for Vesktop.
+-   If you are using Flatpak, open [Flatseal](https://flathub.org/en/apps/com.github.tchx84.Flatseal) , scroll to "Environment" and add the variable `XDG_SESSION_TYPE=x11`.
 -   If you are not using Flatpak, you can opt into X11 by running vesktop with the `--ozone-platform=x11` flag. To make this permanent, see [Making Command line flags permanent](#making-command-line-flags-permanent).
 
 ## GNOME Tray Icon
